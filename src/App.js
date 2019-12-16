@@ -2,6 +2,7 @@ import React, { Component, useState } from 'react';
 import './App.css';
 import Person from './Person/Person';
 import Practice1 from './Practice1/Practice1';
+import Practice2 from './Practice2/Practice2';
 
 /* function App() {
   return (
@@ -69,7 +70,7 @@ import Practice1 from './Practice1/Practice1';
   );
 } */
 
-class App extends Component {
+/* class App extends Component {
   state = {
     persons: [
       { name: 'Serdar', age: 18 },
@@ -136,6 +137,14 @@ class App extends Component {
       </div>
     );
   }
+} */
+
+class App extends Component {
+  render() {
+    return (
+      <Practice2 />
+    );
+  };
 }
 
 export default App;
