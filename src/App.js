@@ -69,10 +69,71 @@ import Practice1 from './Practice1/Practice1';
   );
 } */
 
-class App extends React.Component {
+class App extends Component {
+  state = {
+    persons: [
+      { name: 'Serdar', age: 18 },
+      { name: 'Arife', age: 22 }
+    ],
+    otherState: 'other state',
+    showPersons: false
+  }
+
+  nameChangeHandler = (event, index) => {
+    const person = {...this.state.persons[index]};
+    person.name = event.target.value;
+    
+    const persons = [...this.state.persons];
+    persons[index] = person;
+    this.setState({ persons });
+  }
+
+  togglePersonsHandler = () => {
+    this.setState({
+      showPersons: !this.state.showPersons
+    })
+  }
+
+  deletePersonHandler = (index) => {
+    //const persons = this.state.persons.slice();
+    const persons = [...this.state.persons];
+    persons.splice(index, 1);
+    this.setState({ persons });
+  }
+
   render() {
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
+    let persons = null;
+
+    if(this.state.showPersons) {
+      persons = (
+        <div>
+          {this.state.persons.map((person, index) => {
+            return <Person
+                      key={index}
+                      name={person.name}
+                      age={person.age}
+                      click={this.deletePersonHandler.bind(this, index)}
+                      changed={(event) => this.nameChangeHandler(event, index)} />
+          })}
+        </div>
+      );
+    }
+
     return (
-      <Practice1 />
+      <div className="App">
+        <h1>Hi from React. Road to React Native</h1>
+        <p>Maybe there a little p</p>
+        <button style={style} onClick={this.togglePersonsHandler}>Toggle persons</button>
+        {persons}
+      </div>
     );
   }
 }
