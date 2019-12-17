@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import './App.css';
+import classes from './App.module.css';
 import Person from './Person/Person';
 import Practice1 from './Practice1/Practice1';
 import Practice2 from './Practice2/Practice2';
@@ -134,6 +134,7 @@ class App extends Component {
     }; */
 
     let persons = null;
+    let btnClass = '';
 
     if(this.state.showPersons) {
       persons = (
@@ -154,25 +155,28 @@ class App extends Component {
         backgroundColor: 'salmon',
         color: 'white'
       } */
+
+      btnClass = classes.red;
     }
 
     // let classes = ['red', 'bold'].join(' '); // Output: "red bold"
-    const classes = [];
+    const assignedClasses = [];
     if(this.state.persons.length <= 2) {
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
     if(this.state.persons.length <= 1) {
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
 
     return (
       //<StyleRoot>
-      <div className="App">
+      <div className={classes.App}>
         <h1>Hi from React. Road to React Native</h1>
-        <p className={classes.join(' ')}>Maybe there a little p</p>
-        <button className="btn">
-          onClick={this.togglePersonsHandler}
-          >Toggle persons
+        <p className={assignedClasses.join(' ')}>Maybe there a little p</p>
+        <button
+          className={btnClass}
+          onClick={this.togglePersonsHandler}>
+          Toggle persons
         </button>
         {persons}
       </div>
