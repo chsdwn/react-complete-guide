@@ -46,7 +46,6 @@ class Practice2 extends React.Component {
       );
     }
 
-    console.log(this.state.input.length);
     return (
       <div>
         <input type="text" onChange={this.inputOnChangeHandler} value={this.state.input}/>

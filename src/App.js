@@ -3,6 +3,8 @@ import './App.css';
 import Person from './Person/Person';
 import Practice1 from './Practice1/Practice1';
 import Practice2 from './Practice2/Practice2';
+// import Radium, { StyleRoot } from 'radium';
+import styled from 'styled-components';
 
 /* function App() {
   return (
@@ -70,11 +72,26 @@ import Practice2 from './Practice2/Practice2';
   );
 } */
 
-/* class App extends Component {
+/* const StyledButton = styled.button`
+  background-color: ${props => props.alt ? 'red' : 'green'};
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+    color: black;
+  }
+`; */
+
+class App extends Component {
   state = {
     persons: [
       { name: 'Serdar', age: 18 },
-      { name: 'Arife', age: 22 }
+      { name: 'Arife', age: 22 },
+      { name: 'Ali', age: 27 }
     ],
     otherState: 'other state',
     showPersons: false
@@ -103,13 +120,18 @@ import Practice2 from './Practice2/Practice2';
   }
 
   render() {
-    const style = {
-      backgroundColor: 'white',
+    /* const style = {
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
-    };
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
+    }; */
 
     let persons = null;
 
@@ -118,33 +140,46 @@ import Practice2 from './Practice2/Practice2';
         <div>
           {this.state.persons.map((person, index) => {
             return <Person
-                      key={index}
-                      name={person.name}
-                      age={person.age}
-                      click={this.deletePersonHandler.bind(this, index)}
-                      changed={(event) => this.nameChangeHandler(event, index)} />
+              key={index}
+              name={person.name}
+              age={person.age}
+              click={this.deletePersonHandler.bind(this, index)}
+              changed={(event) => this.nameChangeHandler(event, index)} />
           })}
         </div>
       );
+
+      /* style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'white'
+      } */
+    }
+
+    // let classes = ['red', 'bold'].join(' '); // Output: "red bold"
+    const classes = [];
+    if(this.state.persons.length <= 2) {
+      classes.push('red');
+    }
+    if(this.state.persons.length <= 1) {
+      classes.push('bold');
     }
 
     return (
+      //<StyleRoot>
       <div className="App">
         <h1>Hi from React. Road to React Native</h1>
-        <p>Maybe there a little p</p>
-        <button style={style} onClick={this.togglePersonsHandler}>Toggle persons</button>
+        <p className={classes.join(' ')}>Maybe there a little p</p>
+        <button className="btn">
+          onClick={this.togglePersonsHandler}
+          >Toggle persons
+        </button>
         {persons}
       </div>
+      //</StyleRoot>
     );
   }
-} */
+} 
 
-class App extends Component {
-  render() {
-    return (
-      <Practice2 />
-    );
-  };
-}
-
+//export default Radium(App);
 export default App;

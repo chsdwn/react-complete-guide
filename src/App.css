@@ -1,7 +1,26 @@
-body {
-  background-color: #bbb;
-}
-
 .App {
   text-align: center;
+}
+
+.red {
+  color: red;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.btn {
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+
+}
+
+.btn:hover {
+  background-color: lightgreen;
+  color: black;
 }
