@@ -24,14 +24,23 @@ class App extends Component {
     return state;
   }
 
-  componentWillMount() {
+  /* componentWillMount() {
     console.log('App.js componentWillMount');
-  }
+  } */
 
   componentDidMount() {
     console.log('App.js componentDidMount');
   }
  
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('App shouldComponentUpdate');
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log('App componentDidUpdate');
+  }
+
   nameChangeHandler = (event, index) => {
     const person = {...this.state.persons[index]};
     person.name = event.target.value;
