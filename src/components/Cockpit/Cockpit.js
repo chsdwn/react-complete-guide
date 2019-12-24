@@ -5,10 +5,11 @@ const Cockpit = (props) => {
   useEffect(() => {
     console.log('Cockpit useEffect');
     // Http request
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       alert('Saved');
     }, 1000);
     return () => {
+      clearTimeout(timer);
       console.log('Cockpit cleanup work in useEffect');
     }
   }, []); // [] = Just run once when component runs.
