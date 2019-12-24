@@ -5,7 +5,12 @@ const Cockpit = (props) => {
   useEffect(() => {
     console.log('Cockpit useEffect');
     // Http request
-  });
+    setTimeout(() => {
+      alert('Saved');
+    }, 1000);
+  }, []); // [] = Just run once when component runs.
+
+  // useEffect();
 
   const assignedClasses = [];
   let btnClass = '';
