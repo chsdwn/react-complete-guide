@@ -8,9 +8,17 @@ const Cockpit = (props) => {
     setTimeout(() => {
       alert('Saved');
     }, 1000);
+    return () => {
+      console.log('Cockpit cleanup work in useEffect');
+    }
   }, []); // [] = Just run once when component runs.
 
-  // useEffect();
+  useEffect(() => {
+    console.log('Cockpit 2nd useEffect');
+    return () => {
+      console.log('Cockpit cleanup work in 2nd useEffect');
+    }
+  });
 
   const assignedClasses = [];
   let btnClass = '';
