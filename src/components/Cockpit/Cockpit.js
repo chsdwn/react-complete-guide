@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+
 import classes from './Cockpit.module.css';
 
 const Cockpit = (props) => {
+  const toggleBtnRef = useRef(null);
+
   useEffect(() => {
     console.log('Cockpit useEffect');
-    // Http request
-    const timer = setTimeout(() => {
-      //alert('Saved');
-    }, 1000);
+    toggleBtnRef.current.click();
     return () => {
-      clearTimeout(timer);
       console.log('Cockpit cleanup work in useEffect');
     }
   }, []); // [] = Just run once when component runs.
@@ -39,6 +38,7 @@ const Cockpit = (props) => {
       <h1>Hi from React. Road to React Native</h1>
       <p className={assignedClasses.join(' ')}>Maybe there a little p</p>
       <button
+        ref={toggleBtnRef}
         className={btnClass}
         onClick={props.clicked}>
         Toggle persons
