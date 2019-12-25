@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+
 import Person from './Person/Person';
 
 class Persons extends PureComponent {
@@ -17,17 +18,19 @@ class Persons extends PureComponent {
   }
 
   render() {
-    return this.props.persons.map((person, index) => {
-      return(
-        <Person
-          key={index}
-          name={person.name}
-          age={person.age}
-          click={() => this.props.clicked(index)}
-          changed={(event) => this.props.changed(event, index)}
-          isAuth={this.props.isAuthenticated} />
-      );
-    });
+    return (
+      this.props.persons.map((person, index) => {
+        return (
+          <Person
+            key={index}
+            name={person.name}
+            age={person.age}
+            click={() => this.props.clicked(index)}
+            changed={(event) => this.props.changed(event, index)}
+            isAuth={this.props.isAuthenticated} />
+        );
+      })
+    );
   }
 }
 
