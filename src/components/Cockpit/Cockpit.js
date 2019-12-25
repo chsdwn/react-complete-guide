@@ -6,7 +6,7 @@ const Cockpit = (props) => {
     console.log('Cockpit useEffect');
     // Http request
     const timer = setTimeout(() => {
-      alert('Saved');
+      //alert('Saved');
     }, 1000);
     return () => {
       clearTimeout(timer);
